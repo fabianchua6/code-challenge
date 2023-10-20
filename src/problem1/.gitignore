@@ -1,0 +1,5 @@
+# Coverage directory by Jest
+coverage
+
+# node_modules
+node_modules/
