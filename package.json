@@ -4,5 +4,8 @@
   },
   "scripts": {
     "test": "jest"
+  },
+  "dependencies": {
+    "husky": "^8.0.3"
   }
 }
