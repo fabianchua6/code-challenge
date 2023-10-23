@@ -3,13 +3,10 @@ import {
   ChakraProvider,
   Box,
   Text,
-  Link,
   VStack,
   Code,
-  Grid,
   Flex,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
 import NavBar from './components/NavBar';
 import theme from './theme';
 import { Outlet } from 'react-router-dom';
