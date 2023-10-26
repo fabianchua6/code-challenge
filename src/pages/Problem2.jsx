@@ -86,8 +86,6 @@ export default function Problem2() {
   }, [address, data, values.buy]);
 
   const handleValueChange = (type, val) => {
-    console.log(values);
-
     // // block change if try to send more than wallet balance
     // if (parseFloat(val) > parseFloat(data?.formatted.substring(0, 8))) {
     //   return;
