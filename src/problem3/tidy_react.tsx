@@ -87,9 +87,10 @@ export const WalletPage: React.FC<Props> = (props: Props) => {
       .getPrices()
       .then(prices => {
         const currencyTokenMap = {};
-        for (const [value] of prices.entries(currencyTokenMap)) {
-          currencyTokenMap[value.currency] = value.price;
-        }
+        prices.forEach(entry => {
+          currencyTokenMap[entry.currency] = entry.price;
+        });
+
         setPrices(currencyTokenMap);
       })
       .catch(error => {
