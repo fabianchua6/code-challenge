@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^14.5.1",
     "framer-motion": "^6.5.1",
     "localforage": "^1.10.0",
+    "lucide-react": "^0.288.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,6 +21,9 @@
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "sort-by": "^1.2.0",
+    "typescript": "^5.2.2",
+    "viem": "^1.16.6",
+    "wagmi": "^1.4.5",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
@@ -34,6 +38,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "eslintIgnore": [
+    "node_modules",
+    "build/*"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
