@@ -1,0 +1,32 @@
+[
+  {
+    "currency": "BTC",
+    "amount": 0.5,
+    "blockchain": "Bitcoin"
+  },
+  {
+    "currency": "ETH",
+    "amount": 2,
+    "blockchain": "Ethereum"
+  },
+  {
+    "currency": "DOT",
+    "amount": 20,
+    "blockchain": "Polkadot"
+  },
+  {
+    "currency": "ADA",
+    "amount": 100,
+    "blockchain": "Cardano"
+  },
+  {
+    "currency": "USDT",
+    "amount": 1000,
+    "blockchain": "Tron"
+  },
+  {
+    "currency": "ZIL",
+    "amount": 2000,
+    "blockchain": "Zilliqa"
+  }
+]
