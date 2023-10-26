@@ -87,7 +87,7 @@ export const WalletPage: React.FC<Props> = (props: Props) => {
       .getPrices()
       .then(prices => {
         const currencyTokenMap = {};
-        for (const [key, value] of prices.entries(currencyTokenMap)) {
+        for (const [value] of prices.entries(currencyTokenMap)) {
           currencyTokenMap[value.currency] = value.price;
         }
         console.log(currencyTokenMap);
@@ -126,7 +126,7 @@ export const WalletPage: React.FC<Props> = (props: Props) => {
         const rightPriority = getPriority(rhs.blockchain);
         return leftPriority > rightPriority ? -1 : 1;
       });
-  }, [balances, prices]);
+  }, [balances]);
 
   const formattedBalances = sortedBalances.map((balance: WalletBalance) => {
     return {
