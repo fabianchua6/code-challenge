@@ -5,8 +5,12 @@ Please submit your application along with the solutions attached or linked.
 
 It is important that you minimally attempt the problems, even if you do not arrive at a working solution.
 
+## Self Introduction 👋🏼
+Hi, I'm Fabian Chua, a Year 3 Software Engineering undergraduate from SIT. My past experiences includes interning at Accenture as a Front End Engineer Intern as well as GovTech as a Delivery Manager Intern. More about me on my [LinkedIn](https://www.linkedin.com/in/fabianchua6/) and [personal website](https://www.fabianchua.com/).
+
 ## Submission for Frontend Challenge (Problem 1, 2 and 3) ##
 This repository contains solutions to the Switcheo Code Challenge (Frontend Development). The solutions are structured as a web application to showcase Problem 2 and 3 through a website. Problem 1 code can be found in `src/problem1`.
+
 
 ## Technologies Used
 
