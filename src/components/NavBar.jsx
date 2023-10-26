@@ -5,21 +5,19 @@ import {
   HStack,
   IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
+  Text,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, Icon } from '@chakra-ui/icons';
 import { Logo } from './Logo';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { useAccount, useConnect, useDisconnect, useEnsAvatar } from 'wagmi';
+import { InjectedConnector } from 'wagmi/connectors/injected';
+import { Unlink, Wallet } from 'lucide-react';
 
 const Links = {
-  'Problem 1': '/problem1',
   'Problem 2': '/problem2',
   'Problem 3': '/problem3',
 };
@@ -42,6 +40,39 @@ const NavLink = (props: { children: React.ReactNode, href: string }) => {
     >
       {children}
     </Box>
+  );
+};
+
+const ConnectWallet = () => {
+  const { address, isConnected } = useAccount();
+  const { data: ensAvatar } = useEnsAvatar({ address });
+  const { connect } = useConnect({
+    connector: new InjectedConnector(),
+  });
+  const { disconnect } = useDisconnect();
+
+  if (isConnected)
+    return (
+      <Flex alignItems="center">
+        <Avatar size={'sm'} mr={2} src={ensAvatar} alt="ENS Avatar" />
+        <Text>
+          {address?.toString().slice(0, -36)}...
+          {address?.toString().substring(38)}
+        </Text>
+        <IconButton
+          ml="2"
+          icon={<Unlink size={16} />}
+          onClick={() => disconnect()}
+        >
+          Disconnect
+        </IconButton>
+      </Flex>
+    );
+  return (
+    <Button onClick={() => connect()}>
+      <Icon as={Wallet} size={16} mr={[0, 2]} />
+      <Text hideBelow={'md'}>Connect Wallet</Text>
+    </Button>
   );
 };
 
@@ -72,25 +103,9 @@ export default function NavBar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={'full'}
-                variant={'link'}
-                cursor={'pointer'}
-                minW={0}
-              >
-                <Box>
-                  <Logo />
-                </Box>
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
-              </MenuList>
-            </Menu>
+            <Box>
+              <Logo />
+            </Box>
             <HStack
               as={'nav'}
               spacing={4}
@@ -104,21 +119,17 @@ export default function NavBar() {
               <ColorModeSwitcher />
             </HStack>
           </HStack>
-          <Flex alignItems={'center'}>
-            <Avatar
-              size={'sm'}
-              src={
-                'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-              }
-            />
-          </Flex>
+
+          <ConnectWallet />
         </Flex>
 
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              {Links.map(link => (
-                <NavLink key={link[0]}>{link[1]}</NavLink>
+              {Object.keys(Links).map(key => (
+                <NavLink key={key} href={Links[key]}>
+                  {key}
+                </NavLink>
               ))}
             </Stack>
           </Box>
